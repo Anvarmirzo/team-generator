@@ -35,12 +35,12 @@
     <p *ngIf="!isValidTeamCount" class="error-msg">Invalid number of teams</p>
   </div>
 
-  <div class="teams-container" *ngIf="teams.length">
-    <div class="team-container" *ngFor="let team of teams; let i = index">
-      <h3>Team {{i + 1}}:</h3>
-      <ul class="list">
-        <li class="list-item" *ngFor="let member of team">{{member}}</li>
-      </ul>
-    </div>
+  <div *ngIf="teams.length">
+    <app-team
+      class="team-container"
+      *ngFor="let team of teams; let i = index"
+      [teamNumber]="i+1"
+      [team]="team"
+    ></app-team>
   </div>
 </div>

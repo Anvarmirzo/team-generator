@@ -7,7 +7,7 @@ import {FormBuilder, Validators,} from "@angular/forms";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  members: string[] = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
+  members: string[] = [];
   teams: string[][] = [];
   isValidTeamCount = true;
 
