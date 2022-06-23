@@ -8,4 +8,10 @@ import {Component} from '@angular/core';
 export class AppComponent {
   newMemberName = '';
   members: string[] = []
+
+  addMember(name: string) {
+    this.members.push(name);
+    console.log(this.members);
+    this.newMemberName = '';
+  }
 }
