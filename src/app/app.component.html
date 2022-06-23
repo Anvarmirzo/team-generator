@@ -4,12 +4,21 @@
     <ul class="list">
       <li class="list-item" *ngFor="let member of members">{{member}}</li>
     </ul>
-    <form class="add-members-form">
-      <input type="text" [(ngModel)]="newMemberName" name="name" placeholder="Name">
-      <button type="button" (click)="addMember(newMemberName)">Add</button>
+    <form
+      (submit)="addMember(teamForm.value.newMemberName)"
+      [formGroup]="teamForm"
+      class="add-members-form"
+    >
+      <input
+        type="text"
+        placeholder="Name"
+        formControlName="newMemberName"
+        [class.invalid]="teamForm.get('newMemberName')?.invalid && (teamForm.get('newMemberName')?.dirty || teamForm.get('newMemberName')?.touched)"
+      >
+      <button>Add</button>
     </form>
     <form class="generate-form">
-      <input type="text" placeholder="# of teams"/>
+      <input type="text" placeholder="# of teams">
       <button>Generate</button>
     </form>
   </div>

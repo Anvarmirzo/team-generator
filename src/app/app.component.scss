@@ -16,7 +16,7 @@ h1 {
   overflow: auto;
 }
 
-.list-item{
+.list-item {
   margin-bottom: 0.5rem;
   font-size: 1.25rem;
 }
@@ -27,6 +27,14 @@ h1 {
   margin-right: 0.5rem;
   width: 100%;
   display: flex;
+  outline: none;
+
+  &.invalid {
+    &::placeholder{
+      color: red;
+    }
+    border-bottom-color: red;
+  }
 }
 
 .add-members-form button {
@@ -64,3 +72,4 @@ h1 {
 .error-msg {
   color: red;
 }
+
