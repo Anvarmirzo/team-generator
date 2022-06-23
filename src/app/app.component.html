@@ -2,24 +2,45 @@
   <div class="ui card">
     <h1>Team Generator</h1>
     <ul class="list">
-      <li class="list-item" *ngFor="let member of members">{{member}}</li>
+      <li class="list-item" *ngFor="let member of members; let i = index">{{i + 1}}. {{member}}</li>
     </ul>
     <form
-      (submit)="addMember(teamForm.value.newMemberName)"
       [formGroup]="teamForm"
+      (submit)="addMember(teamForm.value.newMemberName)"
       class="add-members-form"
     >
       <input
         type="text"
         placeholder="Name"
         formControlName="newMemberName"
+        class="input"
         [class.invalid]="teamForm.get('newMemberName')?.invalid && (teamForm.get('newMemberName')?.dirty || teamForm.get('newMemberName')?.touched)"
       >
       <button>Add</button>
     </form>
-    <form class="generate-form">
-      <input type="text" placeholder="# of teams">
+    <form
+      [formGroup]="generateForm"
+      (submit)="generateTeams(generateForm.value.teamCount)"
+      class="generate-form">
+      <input
+        type="number"
+        placeholder="Number of teams"
+        formControlName="teamCount"
+        class="input"
+        [class.invalid]="generateForm.get('teamCount')?.invalid && (generateForm.get('teamCount')?.dirty || generateForm.get('teamCount')?.touched)"
+      >
       <button>Generate</button>
     </form>
+
+    <p *ngIf="!isValidTeamCount" class="error-msg">Invalid number of teams</p>
+  </div>
+
+  <div class="teams-container" *ngIf="teams.length">
+    <div class="team-container" *ngFor="let team of teams; let i = index">
+      <h3>Team {{i + 1}}:</h3>
+      <ul class="list">
+        <li class="list-item" *ngFor="let member of team">{{member}}</li>
+      </ul>
+    </div>
   </div>
 </div>
