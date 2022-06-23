@@ -1,0 +1,8 @@
+<article class="team-container">
+  <div>
+    <h3>Team {{teamNumber}}:</h3>
+    <ul class="list">
+      <li class="list-item" *ngFor="let member of team">{{member | titlecase}}</li>
+    </ul>
+  </div>
+</article>

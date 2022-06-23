@@ -1,0 +1,12 @@
+.list {
+  padding: 1rem;
+  width: 100%;
+  min-height: 10rem;
+  border: 0.1rem solid grey;
+  overflow: auto;
+}
+
+.list-item {
+  margin-bottom: 0.5rem;
+  font-size: 1.25rem;
+}
