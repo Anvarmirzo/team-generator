@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {FormBuilder, Validators,} from "@angular/forms";
 
 @Component({
   selector: 'app-root',
@@ -6,12 +7,22 @@ import {Component} from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  newMemberName = '';
-  members: string[] = []
+  members: string[] = [];
 
-  addMember(name: string) {
-    this.members.push(name);
-    console.log(this.members);
-    this.newMemberName = '';
+  teamForm = this.fb.group({
+    newMemberName: ['', Validators.required],
+  })
+
+
+  constructor(private fb: FormBuilder) {
+  }
+
+
+  addMember(name?: string | null) {
+    const trimmed = name?.trim()
+    if (trimmed) {
+      this.members.push(trimmed)
+      this.teamForm.reset();
+    }
   }
 }
